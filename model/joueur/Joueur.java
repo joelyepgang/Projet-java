@@ -2,8 +2,6 @@ package model.joueur;
 
 import java.util.ArrayList;
 
-import model.piece.Piece;
-
 public class Joueur {
 	private String nom;
 	private String prenom;
@@ -28,9 +26,9 @@ public class Joueur {
 	
 	/**
 	 * 
-	 * Le joueur prend la piËce dÈfinie de la victime
-	 * @param victime > joueur qui perd sa piËce.
-	 * @param numero > Index de la piËce dans la liste du joueur qui perd sa piËce
+	 * Le joueur prend la pi√®ce d√©finie de la victime
+	 * @param victime > joueur qui perd sa pi√®ce.
+	 * @param numero > Index de la pi√®ce dans la liste du joueur qui perd sa pi√®ce
 	 * 
 	 */
 	public void prendPiece(Joueur victime, int numero) {
@@ -38,14 +36,14 @@ public class Joueur {
 		
 		victime.getListePieces().remove(numero);
 		
-		System.out.println(this.getNomEntier()+" prend la piËce de "+victime.getNomEntier());
+		System.out.println(this.getNomEntier()+" prend la pi√®ce de "+victime.getNomEntier());
 	}
 	
 	
 	/**
-	 * MÈthode permettant de renvoyer "Nom Prenom"
+	 * M√©thode permettant de renvoyer "Nom Prenom"
 	 * 
-	 * @return le nom + le prÈnom du joueur
+	 * @return le nom + le pr√©nom du joueur
 	 */
 	public String getNomEntier() {
 		String s = this.getNom()+" "+this.getPrenom();
