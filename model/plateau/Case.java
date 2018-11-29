@@ -1,11 +1,9 @@
 package model.plateau;
 
-import model.coordonees.Coordonnees;
-
 
 public class Case {
 	private Coordonnees coordonnees;
-	
+	private Piece occupeePar;
 	
 	
 	private int longueur = 2;
@@ -51,6 +49,13 @@ public class Case {
 		this.largeur = largeur;
 	}
 
+	public Piece getOccupeePar() {
+		return occupeePar;
+	}
+
+	public void setOccupeePar(Piece occupeePar) {
+		this.occupeePar = occupeePar;
+	}
 	
 	
 }
