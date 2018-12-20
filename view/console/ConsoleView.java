@@ -9,6 +9,10 @@ import model.joueur.Joueur;
 import view.View;
 
 public class ConsoleView extends View {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected Scanner sc;
 	
 	public ConsoleView(Joueur model, Controller controller) {
@@ -24,14 +28,38 @@ public class ConsoleView extends View {
 	}
 	
 	private class ReadInput implements Runnable{
+	
+		/**
+		 * Système de scanner
+		 * 
+		 */
 		public void run() {
 			while(true){
 				try{
+					
 					String c = sc.next();
 					
 					switch(c){
-						case "" : 
-							//Méthode controller;
+						case "bouge" : 
+							int index = sc.nextInt();
+							String orientation = sc.next();
+							int distance = sc.nextInt();
+							controller.bougeControle(index, orientation, distance);
+							
+							
+							break;
+						case "info" : 
+
+							System.out.println("Vous êtes le joueur "+model.getNomEntier());
+							controller.informationSurPieces();
+							
+							
+							break;
+						case "board" : 
+
+							controller.informationSurPlateau();
+							
+							
 							break;
 					}
 					
@@ -39,8 +67,12 @@ public class ConsoleView extends View {
 				}
 				catch(InputMismatchException e){
 					affiche("");
-		
-	}}}}
+				
+	
+				}
+			}
+		}
+	}
 				
 	@Override
 	public void affiche(String string) {
