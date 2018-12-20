@@ -29,7 +29,7 @@ public class Server {
 	/**
 	 * Lancement du serveur
 	 * <br>
-	 * Exécuté au lancement de Server.java
+	 * ExÃ©cutÃ© au lancement de Server.java
 	 * 
 	 * @param args Arguments
 	 */
@@ -40,21 +40,21 @@ public class Server {
 		ServerSocket socket;
 		
 		try {
-		//Création du socket serveur
+		//CrÃ©ation du socket serveur
 		socket = new ServerSocket(4123);
 		
-		//Création d'un nouveau Thread visant à collecter les informations
+		//CrÃ©ation d'un nouveau Thread visant Ã  collecter les informations
 		//de connection
 		Thread t = new Thread(new Connexion(socket));
 		t.start(); //Lancement
 		
-		scanner = new ServerScanner(socket); //Le scanner affilié au serveur
-		scan = new Thread(scanner); //Le Thread affilié au scanneur et lancé
+		scanner = new ServerScanner(socket); //Le scanner affiliÃ© au serveur
+		scan = new Thread(scanner); //Le Thread affiliÃ© au scanneur et lancÃ©
 		
-		Server.setScanner(scanner); //Pas oublier de dire au serveur quel est son scanneur
+		Server.setScanner(scanner); /informe le serveur quel est son scanneur
 		
-		System.out.println("Serveur connecté"); 
-		System.out.println("Scanner opérationnel; attente de requêtes");
+		System.out.println("Serveur connectÃ©"); 
+		System.out.println("Scanner opÃ©rationnel; attente de requÃªtes");
 		
 		} catch (IOException e) {
 			
@@ -76,7 +76,7 @@ public class Server {
 		   /**
 		    * Constructeur du module de connection
 		    * <br>
-		    * Gère le trafic entrant lors de la connexion uniquement
+		    * GÃ¨re le trafic entrant lors de la connexion uniquement
 		    * 
 		    * @param s
 		    */
@@ -85,10 +85,10 @@ public class Server {
 			}
 			
 			/**
-			 * Méthode Serveur
+			 * MÃ©thode Serveur
 			 * <br>
-			 * Thread s'éxécutant lorsque un client se connecte
-			 * Il fait aussi en sorte de dire à ce client quelle place le serveur lui a donné
+			 * Thread s'Ã©xÃ©cutant lorsque un client se connecte
+			 * Il fait aussi en sorte de dire Ã  ce client quelle place le serveur lui a donnÃ©
 			 * 
 			 */
 			public void run() {
@@ -99,29 +99,29 @@ public class Server {
 		        		
 		        		//Acceptation d'un client
 						socket = socketserver.accept(); 
-					    System.out.println("Un joueur s'est connecté, envoi des informations relatives à l'initialisation");
+					    System.out.println("Un joueur s'est connectÃ©, envoi des informations relatives Ã  l'initialisation");
 					        
 					    //Out: Trafic sortant
 					    //In: Trafic entrant
 						out = new PrintWriter(socket.getOutputStream());
 						in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 						
-						//Execution de la méthode d'initialisation
+						//Execution de la mÃ©thode d'initialisation
 						this.initialisation(numJoueur);
 				        
 						//! Pas oublier d'ajouter ce client dans la liste des clients
-						//gérés par le scanneur du serveur
+						//gÃ©rÃ©s par le scanneur du serveur
 				        Server.getScanner().getSocket().add(socket);
 				        
-				        //Une fois qu'il y'a deux joueurs connectés
+				        //Une fois qu'il y'a deux joueurs connectÃ©s
 				        if(numJoueur == 2) {
 				        	
 				        	//Lancement du scanneur
 				        	Server.scan.start();
-				        	System.out.println("Scanner serveur lancé");
+				        	System.out.println("Scanner serveur lancÃ©");
 				        }
 				        
-						numJoueur++; //Incrémentation du nombre de joueurs connectés				            
+						numJoueur++; //IncrÃ©mentation du nombre de joueurs connectÃ©s				            
 		        	}
 		        
 		        } catch (IOException e) {
@@ -132,14 +132,14 @@ public class Server {
 			/**
 			 * Initialisation du jeu grace au serveur
 			 * <br>
-			 * But: Dire au premier client que c'est son tour et au deuxième que c'est au tour du premier.
+			 * But: Dire au premier client que c'est son tour et au deuxiÃ¨me que c'est au tour du premier.
 			 * 
 			 */
 			public void initialisation(int nombre) {
 				
 				if(nombre == 1) {
 					out.println("No");
-					out.println("Vous êtes assigné au joueur 1");
+					out.println("Vous Ãªtes assignÃ© au joueur 1");
 					out.println("0");
 					out.println("No");
 					out.println("0");
@@ -148,7 +148,7 @@ public class Server {
 				}
 				if(nombre == 2) {
 					out.println("No");
-					out.println("Vous êtes assigné au joueur 2");
+					out.println("Vous Ãªtes assignÃ© au joueur 2");
 					out.println("0");
 					out.println("No");
 					out.println("0");
